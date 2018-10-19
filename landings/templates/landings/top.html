@@ -1,0 +1,37 @@
+{% extends '../base.html' %}
+
+{% block title %}トップ{% endblock %}
+
+{% block content %}
+<section>
+  <div class="row">
+    <div class="col-sm"><h2>お店を探す</h2></div>
+    <div class="col-sm"><a href="{% url 'shops:create' %}" class="btn btn-secondary">新しいお店を登録する</a></div>
+  </div>
+  <ul>
+    {% for shop in shop_list %}
+    <li>
+      <p>{{ shop.name }}（{{ shop.kana_name }}）</p>
+      <p>{{ shop.phone_number}}</p>
+      <p>{{ shop.prefecture.name }} {{ shop.address }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+<section>
+  <div class="row">
+    <div class="col-sm"><h2>新着口コミ</h2></div>
+    <div class="col-sm"><a href="{% url 'reviews:create' %}" class="btn btn-secondary">口コミを投稿する</a></div>
+  </div>
+  <ul>
+    {% for review in review_list %}
+    <li>
+      <p>posted by {{ review.posted_by.email }} {{ review.posted_at|date:"Y/m//d G:i:s" }}</p>
+      {% if review.photo %}
+      <img src="{{review.photo.url}}" width="200" height="200">
+      {% endif %}
+      <p>{{ review.comment }}</p>
+    </li>
+    {% endfor %}
+</section>
+{% endblock %}
