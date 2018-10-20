@@ -1,3 +1,11 @@
 .form-table th {
   text-align: right;
 }
+
+.review-score i::before {
+  color: #d2d2d2;
+}
+
+.review-score i.active::before {
+  color: #edb867;
+}

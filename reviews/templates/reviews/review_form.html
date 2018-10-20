@@ -1,11 +1,37 @@
 {% extends '../base.html' %}
+{% load static %}
 
 {% block title %}口コミ投稿{% endblock %}
+
+{% block header_css %}
+  <link rel="stylesheet" href="{% static 'css/jquery-bar-rating/fontawesome-stars.css' %}">
+{% endblock %}
 
 {% block content %}
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
+  <select class="barrating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
   {{ form.as_p }}
   <button type="submit" class="btn btn-primary">投稿</button>
 </form>
+{% endblock %}
+
+{% block footer_js %}
+  <script src="{% static 'js/jquery-bar-rating/jquery.barrating.min.js' %}"></script>
+  <script>
+    $(function(){
+      $('.barrating').barrating({
+        theme: 'fontawesome-stars',
+        onSelect: function(value, text) {
+          $('#{{ form.score.auto_id }}').val(value);
+        }
+      });
+    });
+  </script>
 {% endblock %}

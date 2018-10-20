@@ -1,6 +1,11 @@
 {% extends '../base.html' %}
+{% load static %}
 
 {% block title %}トップ{% endblock %}
+
+{% block header_css %}
+  <link rel="stylesheet" href="{% static 'css/jquery-bar-rating/fontawesome-stars-o.css' %}">
+{% endblock %}
 
 {% block content %}
 <section>
@@ -27,6 +32,15 @@
     {% for review in review_list %}
     <li>
       <p>posted by {{ review.posted_by.nickname }} {{ review.posted_at|date:"Y/m//d G:i:s" }}</p>
+      {% if review.score %}
+      <select class="barrating" data-score="{{review.score}}">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      {% endif %}
       {% if review.photo %}
       <img src="{{review.photo.url}}" width="200" height="200">
       {% endif %}
@@ -34,4 +48,20 @@
     </li>
     {% endfor %}
 </section>
+{% endblock %}
+
+{% block footer_js %}
+  <script src="{% static 'js/jquery-bar-rating/jquery.barrating.min.js' %}"></script>
+  <script>
+    $(function(){
+      $('.barrating').each(function(){
+        var $this = $(this);
+        $this.barrating({
+          theme: 'fontawesome-stars-o',
+          readonly: true,
+          initialRating: $this.data('score'),
+        });
+      });
+    });
+  </script>
 {% endblock %}
