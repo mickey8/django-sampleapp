@@ -36,6 +36,9 @@ class Shop(models.Model):
     prefecture = models.ForeignKey(Prefecture, on_delete=models.CASCADE)
     address = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class ShopProfile(models.Model):
     shop = models.OneToOneField(Shop, on_delete=models.CASCADE)
