@@ -1,0 +1,16 @@
+{% extends '../base.html' %}
+
+{% block title %}お店ランキング{% endblock %}
+
+{% block content %}
+  <h2>お店ランキング</h2>
+  <ol>
+    {% for shop in object_list %}
+    <li>
+      <p>{{ shop.name }}（{{ shop.kana_name }}）</p>
+      <p>{{ shop.phone_number}}</p>
+      <p>{{ shop.prefecture.name }} {{ shop.address }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+{% endblock %}

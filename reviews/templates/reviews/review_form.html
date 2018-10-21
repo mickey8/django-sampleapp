@@ -3,10 +3,6 @@
 
 {% block title %}口コミ投稿{% endblock %}
 
-{% block header_css %}
-  <link rel="stylesheet" href="{% static 'css/jquery-bar-rating/fontawesome-stars.css' %}">
-{% endblock %}
-
 {% block content %}
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
@@ -23,7 +19,6 @@
 {% endblock %}
 
 {% block footer_js %}
-  <script src="{% static 'js/jquery-bar-rating/jquery.barrating.min.js' %}"></script>
   <script>
     $(function(){
       $('.barrating').barrating({

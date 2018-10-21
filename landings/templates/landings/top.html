@@ -3,17 +3,13 @@
 
 {% block title %}トップ{% endblock %}
 
-{% block header_css %}
-  <link rel="stylesheet" href="{% static 'css/jquery-bar-rating/fontawesome-stars-o.css' %}">
-{% endblock %}
-
 {% block content %}
 <section>
   <div class="row">
-    <div class="col-sm"><h2>お店を探す</h2></div>
+    <div class="col-sm"><h2>人気のお店TOP3</h2></div>
     <div class="col-sm"><a href="{% url 'shops:create' %}" class="btn btn-secondary">新しいお店を登録する</a></div>
   </div>
-  <ul>
+  <ol>
     {% for shop in shop_list %}
     <li>
       <p>{{ shop.name }}（{{ shop.kana_name }}）</p>
@@ -21,7 +17,8 @@
       <p>{{ shop.prefecture.name }} {{ shop.address }}</p>
     </li>
     {% endfor %}
-  </ul>
+  </ol>
+  <p class="text-right"><a href="{% url 'shops:ranking' %}">もっと見る</a></p>
 </section>
 <section>
   <div class="row">
@@ -31,37 +28,14 @@
   <ul>
     {% for review in review_list %}
     <li>
-      <p>posted by {{ review.posted_by.nickname }} {{ review.posted_at|date:"Y/m//d G:i:s" }}</p>
-      {% if review.score %}
-      <select class="barrating" data-score="{{review.score}}">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      {% endif %}
-      {% if review.photo %}
-      <img src="{{review.photo.url}}" width="200" height="200">
-      {% endif %}
-      <p>{{ review.comment }}</p>
+      {% include 'reviews/cassette.html' %}
     </li>
     {% endfor %}
+  </ul>
+  <p class="text-right"><a href="{% url 'reviews:list' %}">もっと見る</a></p>
 </section>
 {% endblock %}
 
 {% block footer_js %}
-  <script src="{% static 'js/jquery-bar-rating/jquery.barrating.min.js' %}"></script>
-  <script>
-    $(function(){
-      $('.barrating').each(function(){
-        var $this = $(this);
-        $this.barrating({
-          theme: 'fontawesome-stars-o',
-          readonly: true,
-          initialRating: $this.data('score'),
-        });
-      });
-    });
-  </script>
+  {% include 'reviews/cassette_js.html' %}
 {% endblock %}

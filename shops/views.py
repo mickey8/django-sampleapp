@@ -1,8 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from .forms import ShopCreateForm
+from .models import Shop
+
+
+class ShopRankingView(LoginRequiredMixin, ListView):
+    model = Shop
 
 
 class ShopCreateView(LoginRequiredMixin, CreateView):
