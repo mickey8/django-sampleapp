@@ -11,14 +11,19 @@
   {%block header_css %}{% endblock %}
 </head>
 
-<body>
-  <div id="sidebar">
-    {% block sidebar %}
-    <ul>
-      <li><a href="/">Home</a></li>
-    </ul>
+<body class="container">
+  <section id="header" class="clearfix" style="height: 50px;">
+    <div class="float-left"><a href="{% url 'top' %}"><h1>MJ</h1></a></div>
+    {% block header-auth %}
+    <div class="float-right">
+      {% if user.is_authenticated %}
+      ようこそ <a href="{% url 'profile' %}">{{ user.nickname }}</a> さん
+      {% else %}
+      <a href="{% url 'login' %}">ログイン</a>
+      {% endif %}
+    </div>
     {% endblock %}
-  </div>
+  </section>
 
   <div id="content" class="container">
     {% block content %}{% endblock %}
