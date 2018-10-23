@@ -36,6 +36,24 @@ class Shop(models.Model):
     prefecture = models.ForeignKey(Prefecture, on_delete=models.CASCADE)
     address = models.CharField(max_length=255)
 
+    @classmethod
+    def list_all(cls):
+        return cls.objects.all()
+
+    @classmethod
+    def list_ranking(cls, head=None):
+        return sorted(
+            cls.objects.all().prefetch_related('review_set'),
+            key=lambda x: x.score, reverse=True
+        )[0:head]
+
+
+    @property
+    def score(self):
+        scores = [r.score for r in self.review_set.all() if r.score]
+        return sum(scores) / len(scores) if scores else 0
+
+
     def __str__(self):
         return self.name
 

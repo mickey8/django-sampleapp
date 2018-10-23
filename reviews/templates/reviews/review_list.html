@@ -3,7 +3,7 @@
 {% block title %}レビュー一覧{% endblock %}
 
 {% block content %}
-  Mh2>レビュー一覧</h2>
+  <h2>レビュー一覧</h2>
   <ul>
     {% for review in object_list %}
     <li>
@@ -14,5 +14,5 @@
 {% endblock %}
 
 {% block footer_js %}
-  {% include './cassette_js.html' %}
+  {% include '../js/rating.html' %}
 {% endblock %}

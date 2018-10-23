@@ -12,9 +12,7 @@
   <ol>
     {% for shop in shop_list %}
     <li>
-      <p>{{ shop.name }}（{{ shop.kana_name }}）</p>
-      <p>{{ shop.phone_number}}</p>
-      <p>{{ shop.prefecture.name }} {{ shop.address }}</p>
+      {% include 'shops/cassette.html' %}
     </li>
     {% endfor %}
   </ol>
@@ -37,5 +35,5 @@
 {% endblock %}
 
 {% block footer_js %}
-  {% include 'reviews/cassette_js.html' %}
+  {% include '../js/rating.html' %}
 {% endblock %}

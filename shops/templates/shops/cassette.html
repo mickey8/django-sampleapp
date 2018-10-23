@@ -1,0 +1,14 @@
+<p>{{ shop.name }}（{{ shop.kana_name }}</p>
+{% if shop.score %}
+<p>
+  <select class="barrating" data-score="{{shop.score}}">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</p>
+{% endif %}
+<p>{{ shop.phone_number}}</p>
+<p>{{ shop.prefecture.name }} {{ shop.address }}</p>

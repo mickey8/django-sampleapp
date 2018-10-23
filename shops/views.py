@@ -8,6 +8,10 @@ from .models import Shop
 
 class ShopRankingView(LoginRequiredMixin, ListView):
     model = Shop
+    template_name = 'shops/shop_list.html'
+
+    def get_queryset(self):
+        return self.model.list_ranking()
 
 
 class ShopCreateView(LoginRequiredMixin, CreateView):

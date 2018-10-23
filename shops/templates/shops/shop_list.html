@@ -7,10 +7,12 @@
   <ol>
     {% for shop in object_list %}
     <li>
-      <p>{{ shop.name }}（{{ shop.kana_name }}）</p>
-      <p>{{ shop.phone_number}}</p>
-      <p>{{ shop.prefecture.name }} {{ shop.address }}</p>
+      {% include './cassette.html' %}
     </li>
     {% endfor %}
   </ol>
+{% endblock %}
+
+{% block footer_js %}
+  {% include '../js/rating.html' %}
 {% endblock %}

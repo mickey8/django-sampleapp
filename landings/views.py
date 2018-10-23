@@ -1,13 +1,13 @@
 from django.views.generic import TemplateView
 
-from reviews import apis as review_api
-from shops import apis as shop_api
+from reviews.models import Review
+from shops.models import Shop
 
 
 class TopView(TemplateView):
     template_name = 'landings/top.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['shop_list'] = shop_api.list_ranking()
-        kwargs['review_list'] = review_api.list_latest()
+        kwargs['shop_list'] = Shop.list_ranking(head=3)
+        kwargs['review_list'] = Review.list_latest()[:10]
         return super().get_context_data(**kwargs)

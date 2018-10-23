@@ -9,6 +9,9 @@ from .models import Review
 class ReviewListView(ListView):
     model = Review
 
+    def get_queryset(self):
+        return self.model.list_latest()
+
 
 class ReviewCreateView(FormView):
     form_class = ReviewCreateForm

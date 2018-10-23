@@ -14,3 +14,7 @@ class Review(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     posted_by = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     posted_at = models.DateTimeField(auto_now_add=True)
+
+    @classmethod
+    def list_latest(cls):
+        return cls.objects.order_by('posted_at').reverse()
