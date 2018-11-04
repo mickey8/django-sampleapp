@@ -23,8 +23,8 @@ from landings import views as landings_views
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
-    path('admin/', admin.site.urls),
-    path('reviews/', include('reviews.urls')),
     path('shops/', include('shops.urls')),
+    path('reviews/', include('reviews.urls')),
+    path('admin/', admin.site.urls),
     path('', landings_views.TopView.as_view(), name='top'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
