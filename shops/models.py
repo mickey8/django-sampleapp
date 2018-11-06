@@ -1,27 +1,21 @@
 import logging
 
-from django.core.cache import cache
 from django.db import models
 
 log = logging.getLogger(__name__)
-
-_KEY_PREFECTURES = '_all_prefectures'
 
 
 class Prefecture(models.Model):
     name = models.CharField(max_length=3)
 
+"""
+    @classmethod
+    def list_all(cls):
+        return cls.objects.all()
+
     def __str__(self):
         return self.name
-
-    @classmethod
-    def get_all(cls):
-        prefectures = cache.get(_KEY_PREFECTURES)
-        if not prefectures:
-            log.debug('No prefectures in cache.')
-            prefectures = cls.objects.all()
-            cache.set(_KEY_PREFECTURES, prefectures)
-        return prefectures
+"""
 
 
 class Budget(models.Model):
@@ -47,12 +41,10 @@ class Shop(models.Model):
             key=lambda x: x.score, reverse=True
         )[0:head]
 
-
     @property
     def score(self):
         scores = [r.score for r in self.review_set.all() if r.score]
         return sum(scores) / len(scores) if scores else 0
-
 
     def __str__(self):
         return self.name
