@@ -8,9 +8,7 @@ class ReviewCreateForm(forms.Form):
     comment = forms.CharField(max_length=1000, widget=forms.Textarea)
     score = forms.IntegerField(widget=forms.HiddenInput)
     photo = forms.ImageField()
-    shop = forms.ChoiceField(
-        choices=[(s.id, s.name) for s in Shop.objects.all()]
-    )
+    shop = forms.ModelChoiceField(Shop.objects.all())
 """
 class ReviewCreateForm(forms.ModelForm):
     class Meta:

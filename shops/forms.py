@@ -7,9 +7,7 @@ class ShopCreateForm(forms.Form):
     name = forms.CharField(max_length=128)
     kana_name = forms.CharField(max_length=255)
     phone_number = forms.CharField(max_length=10)
-    prefecture = forms.ChoiceField(
-        choices=[(p.id, p.name) for p in Prefecture.objects.all()]
-    )
+    prefecture = forms.ModelChoiceField(Prefecture.objects.all())
     address = forms.CharField(max_length=255)
 
 

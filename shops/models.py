@@ -8,15 +8,6 @@ log = logging.getLogger(__name__)
 class Prefecture(models.Model):
     name = models.CharField(max_length=3)
 
-"""
-    @classmethod
-    def list_all(cls):
-        return cls.objects.all()
-
-    def __str__(self):
-        return self.name
-"""
-
 
 class Budget(models.Model):
     lowest = models.IntegerField()
