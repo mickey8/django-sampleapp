@@ -21,8 +21,8 @@ from django.urls import include, path
 from landings import views as landings_views
 
 urlpatterns = [
-    path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('shops/', include('shops.urls')),
     path('reviews/', include('reviews.urls')),
     path('admin/', admin.site.urls),
