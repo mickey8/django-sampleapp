@@ -1,0 +1,11 @@
+{% extends '../base.html' %}
+
+{% block title %}プロフィール{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <div><button type="submit" class="btn btn-primary">更新</button></div>
+  </form>
+{% endblock %}

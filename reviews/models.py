@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -18,3 +19,6 @@ class Review(models.Model):
     @classmethod
     def list_latest(cls):
         return cls.objects.order_by('posted_at').reverse()
+
+    def has_score(self):
+        return self.score is not None
