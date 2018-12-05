@@ -9,6 +9,10 @@ UserModel = get_user_model()
 
 
 class Review(models.Model):
+    """
+    レビュー情報のモデル
+    各フィールドは reviews_review テーブルのカラムにマッピングされる
+    """
     comment = models.CharField(max_length=1000)
     photo = models.ImageField(blank=True, null=True)
     score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True)
