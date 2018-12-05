@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import View, ListView
 
 from .forms import ShopCreateForm
-from .models import Prefecture, Shop
+from .models import Shop
 
 
 class ShopRankingView(LoginRequiredMixin, ListView):
@@ -37,7 +37,7 @@ class ShopCreateView(LoginRequiredMixin, View):
         # バリデーション実行
         if not form.is_valid():
             # バリデーションNGの場合はテンプレートを再表示する
-            render(request, 'shops/shop_form.html', {'form': form})
+            return render(request, 'shops/shop_form.html', {'form': form})
 
         # ショップ情報を作成
         form_data = form.cleaned_data
@@ -45,17 +45,9 @@ class ShopCreateView(LoginRequiredMixin, View):
             name=form_data['name'],
             kana_name=form_data['kana_name'],
             phone_number=form_data['phone_number'],
-            prefecture=Prefecture.objects.get(pk=form_data['prefecture']),
+            prefecture=form_data['prefecture'],
             address=form_data['address']
         ).save()
 
         # 次画面にリダイレクト
         return redirect(reverse_lazy('top'))
-
-
-"""
-class ShopCreateView(LoginRequiredMixin, CreateView):
-    form_class = ShopCreateForm
-    success_url = reverse_lazy('top')
-    model = form_class.Meta.model
-"""

@@ -9,9 +9,3 @@ class ShopCreateForm(forms.Form):
     phone_number = forms.CharField(max_length=10)
     prefecture = forms.ModelChoiceField(Prefecture.objects.all())
     address = forms.CharField(max_length=255)
-
-
-class ShopCreateForm2(forms.ModelForm):
-    class Meta:
-        model = Shop
-        fields = '__all__'
