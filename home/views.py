@@ -6,7 +6,7 @@ from shops.models import Shop
 
 
 class TopView(TemplateView):
-    template_name = 'landings/top.html'
+    template_name = 'home/top.html'
 
     def get_context_data(self, **kwargs):
         kwargs['shop_list'] = Shop.list_ranking(head=3)
