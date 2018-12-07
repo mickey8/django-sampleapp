@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
-    'home',
-    'shops',
-    'reviews',
+    'accounts.apps.AccountsConfig',
+    'home.apps.HomeConfig',
+    'shops.apps.ShopsConfig',
+    'reviews.apps.ReviewsConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +131,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #STATIC_ROOT = 'static'
-STATICFILES_DIRS = ('static',)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static_root'),)
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -148,7 +148,7 @@ LOGOUT_REDIRECT_URL = 'login'
 # Media          #
 ##################
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 HIGH_SCORE=3
 PASSWORD_RESET_TIMEOUT_HOURS=3
