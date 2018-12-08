@@ -4,18 +4,32 @@
 {% block title %}口コミ投稿{% endblock %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <select class="barrating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">投稿</button>
-</form>
+<section class="content">
+  <h2><span>口コミ投稿</span></h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <th>評価:</th>
+          <td>
+            <select class="barrating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="form-table">
+    {{ form.as_table }}
+    </table>
+    <div class="form-btn"><button type="submit" class="btn btn-primary btn-block">投稿</button></div>
+  </form>
+</section>
 {% endblock %}
 
 {% block footer_js %}

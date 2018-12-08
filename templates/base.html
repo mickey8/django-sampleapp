@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <title>{% block title %}Djangoハンドブック サンプルアプリケーション{% endblock %}</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -12,8 +12,8 @@
 </head>
 
 <body class="container">
-  <div id="header" class="clearfix" style="height: 50px;">
-    <div class="float-left"><a href="{% url 'top' %}"><h2>Djangoハンドブック サンプルアプリケーション</h2></a></div>
+  <div id="header" class="clearfix">
+    <div class="float-left logo"><a href="{% url 'top' %}"><h2>Djangoハンドブック サンプルアプリケーション</h2></a></div>
     {% block header-auth %}
     <div class="float-right">
       {% if user.is_authenticated %}

@@ -3,5 +3,17 @@
 {% block title %}プロフィール{% endblock %}
 
 {% block content %}
-<p>{{ user.email}}</p>
+<section class="content">
+  <h2><span>プロフィール</span></h2>
+  <table class="form-table">
+    <tr>
+      <th>メールアドレス:</th>
+      <td>{{ user.email }}</td>
+    </tr>
+    <tr>
+      <th>ニックネーム:</th>
+      <td>{{ user.nickname }}</td>
+    </tr>
+  </table>
+</section>
 {% endblock %}

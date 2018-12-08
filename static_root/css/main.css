@@ -1,9 +1,63 @@
-#header a {
-  color: black;
+body {
+  color: #0C3C26;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+h2 span {
+  border-bottom: solid 3px #44B78B;
+}
+
+.btn {
+  background-color: #F1FFF7;
+  color: #0C3C26;
+}
+
+#header {
+  height: 80px;
+  padding: 10px;
+}
+
+#header .logo a {
+  color: #0C4B33;
+}
+
+section.content {
+  border: solid 3px #0C4B33;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+section.content form {
+  padding: 10px;
+}
+
+.form-table {
+  width: 90%;
+}
+
+.form-table th, .form-table td {
+  border-top: dashed 1px #44B78B;
+  border-bottom: dashed 1px #44B78B;
+  padding: 5px 0;
 }
 
 .form-table th {
+  width: 150px;
   text-align: right;
+}
+
+.form-table td {
+  padding-left: 10px;
+}
+
+.form-btn {
+  width: 90%;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .review-score i::before {

@@ -3,7 +3,8 @@
 {% block title %}口コミ一覧{% endblock %}
 
 {% block content %}
-  <h2>口コミ一覧</h2>
+<section class="content">
+  <h2><span>口コミ一覧</span></h2>
   <ul>
     {% for review in object_list %}
     <li>
@@ -11,6 +12,7 @@
     </li>
     {% endfor %}
   </ul>
+</section>
 {% endblock %}
 
 {% block footer_js %}

@@ -4,10 +4,10 @@
 {% block title %}トップ{% endblock %}
 
 {% block content %}
-<section>
+<section class="content">
   <div class="row">
-    <div class="col-sm"><h2>人気のお店TOP3</h2></div>
-    <div class="col-sm"><a href="{% url 'shops:create' %}" class="btn btn-secondary">新しいお店を登録する</a></div>
+    <div class="col-sm"><h2><span>人気のお店TOP3</span></h2></div>
+    <div class="col-sm text-right"><a href="{% url 'shops:create' %}" class="btn btn-secondary">新しいお店を登録する</a></div>
   </div>
   <ol>
     {% for shop in shop_list %}
@@ -18,10 +18,10 @@
   </ol>
   <p class="text-right"><a href="{% url 'shops:ranking' %}">もっと見る</a></p>
 </section>
-<section>
+<section class="content">
   <div class="row">
-    <div class="col-sm"><h2>新着口コミ</h2></div>
-    <div class="col-sm"><a href="{% url 'reviews:create' %}" class="btn btn-secondary">口コミを投稿する</a></div>
+    <div class="col-sm"><h2><span>新着口コミ</span></h2></div>
+    <div class="col-sm text-right"><a href="{% url 'reviews:create' %}" class="btn btn-secondary">口コミを投稿する</a></div>
   </div>
   <ul>
     {% for review in review_list %}

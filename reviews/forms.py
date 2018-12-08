@@ -5,7 +5,7 @@ from shops.models import Shop
 
 
 class ReviewCreateForm(forms.Form):
-    comment = forms.CharField(max_length=1000, widget=forms.Textarea)
+    shop = forms.ModelChoiceField(Shop.objects.all(), label='お店')
+    comment = forms.CharField(max_length=1000, widget=forms.Textarea, label='コメント')
     score = forms.IntegerField(widget=forms.HiddenInput)
-    photo = forms.ImageField()
-    shop = forms.ModelChoiceField(Shop.objects.all())
+    photo = forms.ImageField(label='写真')

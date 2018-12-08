@@ -3,7 +3,8 @@
 {% block title %}お店ランキング{% endblock %}
 
 {% block content %}
-  <h2>お店ランキング</h2>
+<section class="content">
+  <h2><span>お店ランキング</span></h2>
   <ol>
     {% for shop in object_list %}
     <li>
@@ -11,6 +12,7 @@
     </li>
     {% endfor %}
   </ol>
+</section>
 {% endblock %}
 
 {% block footer_js %}
