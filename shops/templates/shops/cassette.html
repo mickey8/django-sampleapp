@@ -1,6 +1,5 @@
-<p>{{ shop.name }}（{{ shop.kana_name }}</p>
-{% if shop.score %}
-<p>
+<div class="cassete">
+  {% if shop.score %}
   <select class="barrating" data-score="{{shop.score}}">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -8,7 +7,8 @@
     <option value="4">4</option>
     <option value="5">5</option>
   </select>
-</p>
-{% endif %}
-<p>{{ shop.phone_number}}</p>
-<p>{{ shop.prefecture.name }} {{ shop.address }}</p>
+  {% endif %}
+  名称: {{ shop.name }}（{{ shop.kana_name }}）<br>
+  電話番号: {{ shop.phone_number}}<br>
+  住所: {{ shop.prefecture.name }} {{ shop.address }}<br>
+</div>

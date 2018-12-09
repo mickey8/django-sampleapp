@@ -20,6 +20,10 @@ h2 span {
   padding: 10px;
 }
 
+#header .logo h1 {
+  font-size: 24px;
+}
+
 #header .logo a {
   color: #0C4B33;
 }
@@ -33,6 +37,11 @@ section.content {
 
 section.content form {
   padding: 10px;
+}
+
+div.cassete {
+  border-bottom: dashed 1px #44B78B;
+  padding-bottom: 5px;
 }
 
 .form-table {
@@ -66,4 +75,9 @@ section.content form {
 
 .review-score i.active::before {
   color: #edb867;
+}
+
+.review-meta {
+  color: #ccc;
+  font-size: 12px;
 }
