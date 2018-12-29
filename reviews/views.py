@@ -20,7 +20,7 @@ class ReviewCreateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         """GETリクエスト用のメソッド"""
 
-        # テンプレートに渡す変数の dict を作成
+        # テンプレートに渡す変数のコンテキストを作成
         context = {
             # 空のフォーム
             'form': ReviewCreateForm(),

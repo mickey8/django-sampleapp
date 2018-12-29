@@ -17,9 +17,9 @@ class Review(models.Model):
     comment = models.CharField(max_length=1000)
     # 画像
     photo = models.ImageField(blank=True, null=True)
-    # 口コミ評価
+    # 評価点数
     score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True)
-    # ショップ。Shop モデルへの外部参照
+    # ショップ（Shop モデルへの外部参照）
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     # 投稿者。ユーザーモデルへの外部参照
     posted_by = models.ForeignKey(UserModel, on_delete=models.CASCADE)
