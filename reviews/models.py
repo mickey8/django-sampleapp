@@ -10,7 +10,7 @@ UserModel = get_user_model()
 
 class Review(models.Model):
     """
-    口コミ情報のモデル
+    口コミ情報を表すモデル
     各フィールドは reviews_review テーブルのカラムにマッピングされる
     """
     # コメント
@@ -18,10 +18,10 @@ class Review(models.Model):
     # 画像
     photo = models.ImageField(blank=True, null=True)
     # 評価点数
-    score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True)
+    score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     # ショップ（Shop モデルへの外部参照）
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
-    # 投稿者。ユーザーモデルへの外部参照
+    # 投稿者（ユーザーモデルへの外部参照）
     posted_by = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     # 投稿日時
     posted_at = models.DateTimeField(auto_now_add=True)

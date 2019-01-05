@@ -1,4 +1,4 @@
-{% extends '../base.html' %}
+{% extends "../base.html" %}
 
 {% block title %}口コミ一覧{% endblock %}
 
@@ -8,7 +8,7 @@
   <ul>
     {% for review in object_list %}
     <li>
-      {% include './cassette.html' %}
+      {% include "./cassette.html" %}
     </li>
     {% endfor %}
   </ul>
@@ -16,5 +16,5 @@
 {% endblock %}
 
 {% block footer_js %}
-  {% include '../js/rating.html' %}
+  {% include "../js/rating.html" %}
 {% endblock %}

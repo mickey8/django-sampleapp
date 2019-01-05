@@ -1,4 +1,4 @@
-{% extends '../base.html' %}
+{% extends "../base.html" %}
 {% load static %}
 
 {% block title %}トップ{% endblock %}
@@ -7,33 +7,33 @@
 <section class="content">
   <div class="row">
     <div class="col-sm"><h2><span>人気のお店TOP3</span></h2></div>
-    <div class="col-sm text-right"><a href="{% url 'shops:create' %}" class="btn btn-secondary">新しいお店を登録する</a></div>
+    <div class="col-sm text-right"><a href="{% url "shops:create" %}" class="btn btn-secondary">新しいお店を登録する</a></div>
   </div>
   <ol>
     {% for shop in shop_list %}
     <li>
-      {% include 'shops/cassette.html' %}
+      {% include "shops/cassette.html" %}
     </li>
     {% endfor %}
   </ol>
-  <p class="text-right"><a href="{% url 'shops:ranking' %}">もっと見る</a></p>
+  <p class="text-right"><a href="{% url "shops:ranking" %}">もっと見る</a></p>
 </section>
 <section class="content">
   <div class="row">
     <div class="col-sm"><h2><span>新着口コミ</span></h2></div>
-    <div class="col-sm text-right"><a href="{% url 'reviews:create' %}" class="btn btn-secondary">口コミを投稿する</a></div>
+    <div class="col-sm text-right"><a href="{% url "reviews:create" %}" class="btn btn-secondary">口コミを投稿する</a></div>
   </div>
   <ul>
     {% for review in review_list %}
     <li>
-      {% include 'reviews/cassette.html' %}
+      {% include "reviews/cassette.html" %}
     </li>
     {% endfor %}
   </ul>
-  <p class="text-right"><a href="{% url 'reviews:list' %}">もっと見る</a></p>
+  <p class="text-right"><a href="{% url "reviews:list" %}">もっと見る</a></p>
 </section>
 {% endblock %}
 
 {% block footer_js %}
-  {% include '../js/rating.html' %}
+  {% include "../js/rating.html" %}
 {% endblock %}

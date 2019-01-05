@@ -39,7 +39,7 @@ class ReviewCreateView(LoginRequiredMixin, View):
             # バリデーションNGの場合はテンプレートを再表示する
             return render(request, 'reviews/review_form.html', {'form': form})
 
-        # レビュー情報を作成
+        # レビュー情報を登録
         form_data = form.cleaned_data
         Review(
             comment=form_data['comment'],
