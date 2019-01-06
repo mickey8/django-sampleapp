@@ -10,12 +10,12 @@ class LengthValidator:
     def validate(self, password, user=None):
         if not self.min_length <= len(password) <= self.max_length:
             raise ValidationError(
-                'パスワードは%d文字以上%d文字以下にしてください' % (
+                'パスワードは{0}文字以上{1}文字以下にしてください'.format(
                     self.min_length, self.max_length
                 )
             )
 
     def get_help_text(self):
-        return 'パスワードは%d文字以上%d文字以下です' % (
+        return 'パスワードは{0}文字以上{1}文字以下です'.format(
             self.min_length, self.max_length
         )
