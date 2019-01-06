@@ -37,19 +37,20 @@ from django.test import tag
 class ReviewCreateViewTest(TestCase):
     """レビュー投稿画面のテストクラス"""
 
-    def test_get_no_login(self):
+    def test_get_not_logged_in(self):
         """未ログインの場合にログイン画面にリダイレクトされること"""
         response = self.client.get(reverse('reviews:create'))
         self.assertRedirects(
-            response, '%s?next=%s' % (
-                reverse('login'), reverse('reviews:create')
+            response, '{login_url}?next={next_url}'.format(
+                login_url=reverse('login'),
+                next_url=reverse('reviews:create'),
             )
         )
 
     def test_get_logged_in(self):
         """ログイン済みの場合にレビュー投稿画面が表示されること"""
         get_user_model().objects.create_user('user@test', 'password')
-        self.client.login(username='user@test', password='password')
+        self.client.login(email='user@test', password='password')
 
         response = self.client.get(reverse('reviews:create'))
         self.assertEqual(200, response.status_code)
